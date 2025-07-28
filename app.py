@@ -17,9 +17,9 @@ st.set_page_config(
     layout="centered"
 )
 
-# Configuración de Metabase desde .env
-METABASE_BASE_URL = os.getenv('METABASE_BASE_URL')
-METABASE_API_KEY = os.getenv('METABASE_API_KEY')
+# Configuración de Metabase desde .env o secrets de Streamlit
+METABASE_BASE_URL = os.getenv('METABASE_BASE_URL') or st.secrets.get("METABASE_BASE_URL", "https://bia.metabaseapp.com")
+METABASE_API_KEY = os.getenv('METABASE_API_KEY') or st.secrets.get("METABASE_API_KEY", "mb_gpEWL1xnHvLH3Tl+6ltslSBVE5mC9fGwaRdOv1aSG5s=")
 
 # CSS simple sin caracteres especiales
 st.markdown("""
