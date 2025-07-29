@@ -213,12 +213,68 @@ def show_landing():
     </div>
     """, unsafe_allow_html=True)
 
-    # Botón CTA principal
-    col1, col2, col3 = st.columns([1, 2, 1])
+    # Botón CTA principal - MUY GRANDE Y CENTRADO
+    st.markdown("""
+    <style>
+        .mega-cta-container {
+            display: flex;
+            justify-content: center;
+            margin: 3rem 0;
+            padding: 2rem;
+        }
+        
+        .mega-cta-button {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            padding: 25px 60px;
+            border: none;
+            border-radius: 60px;
+            font-size: 1.8rem;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 10px 30px rgba(40, 167, 69, 0.4);
+            transition: all 0.3s ease;
+            text-align: center;
+            min-width: 400px;
+            animation: pulse-glow 2s infinite;
+        }
+        
+        .mega-cta-button:hover {
+            background: linear-gradient(135deg, #218838 0%, #1e7e34 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(40, 167, 69, 0.6);
+        }
+        
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 10px 30px rgba(40, 167, 69, 0.4); }
+            50% { box-shadow: 0 15px 40px rgba(40, 167, 69, 0.7); }
+            100% { box-shadow: 0 10px 30px rgba(40, 167, 69, 0.4); }
+        }
+        
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .mega-cta-button {
+                font-size: 1.4rem;
+                padding: 20px 40px;
+                min-width: 300px;
+            }
+        }
+    </style>
+    """, unsafe_allow_html=True)
+    
+    # Crear el botón mega centrado
+    col1, col2, col3 = st.columns([0.5, 3, 0.5])
     with col2:
-        if st.button("🔍 Quiero un nuevo comercializador de energía", key="main_cta", help="Ir al formulario"):
+        st.markdown('<div class="mega-cta-container">', unsafe_allow_html=True)
+        if st.button("🚀 Quiero un nuevo comercializador de energía", 
+                    key="main_cta", 
+                    help="Comenzar comparación ahora",
+                    use_container_width=True):
             st.session_state.page = "formulario"
             st.rerun()
+        st.markdown('</div>', unsafe_allow_html=True)
 
     # Stats Section
     st.markdown("""
